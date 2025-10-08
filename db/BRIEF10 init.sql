@@ -9,3 +9,9 @@ CREATE DATABASE "BRIEF10"
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
+
+
+-- to ADD  img catégorie chien chat poisson 
+-- date d'ajout desprooduit (nouveauté) 
+-- notation produit 
+
