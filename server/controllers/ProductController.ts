@@ -9,17 +9,19 @@ export class ProductController extends Controller {
     const repo = new productRepository();
     const result = await repo.findAll();
 
-    this.errorManager(result);
-    this.response.json(JSON.stringify(result));
+    return this.errorManager(result);
+    // this.response.json(JSON.stringify(result));
   }
 
   
-  public async browseProductsFromCat() {
-    const repo = new productRepository();
-    const result = await repo.findAll();
+  public async browseProductsFromRace() {
+    const targetID =   parseInt( this.request.params.id )
 
-    this.errorManager(result);
-    this.response.json(JSON.stringify(result));
+    const repo = new productRepository();
+    const result = await repo.findAllByRaceID(targetID);
+
+    return this.errorManager(result);
+    // this.response.json(JSON.stringify(result));
   }
 
   // Route GET `/products/:id` - détail 
@@ -29,9 +31,9 @@ export class ProductController extends Controller {
         const repo = new productRepository();
     const result = await repo.findTargetById(targetID);
 
-    this.errorManager(result);
+    return this.errorManager(result);
 
-    this.response.json(JSON.stringify(result));
+    // this.response.json(JSON.stringify(result));
   }
 
 
@@ -40,9 +42,8 @@ export class ProductController extends Controller {
 
         const repo = new productRepository();
     const result = await repo.findRandomTarget();
-    this.errorManager(result);
+    return this.errorManager(result);
 
-    this.response.json(JSON.stringify(result));
   }
 
 

@@ -19,6 +19,8 @@ export abstract class Controller {
           this.response.status(pResult);
           return this.response.send(Error("400 mauvaise requête "));
         }
+        default :
+        return this.response.json(pResult);
       }
     };
   

@@ -3,12 +3,13 @@ DROP TABLE IF EXISTS contient_produit CASCADE;
 DROP TABLE IF EXISTS product CASCADE;
 DROP TABLE IF EXISTS product_category CASCADE;
 DROP TABLE IF EXISTS user_order CASCADE;
+DROP TABLE IF EXISTS animals_category CASCADE;
 DROP TABLE IF EXISTS animals_categories CASCADE;
 
-CREATE TABLE animals_categories(
-   id_animals_categorie SERIAL,
+CREATE TABLE animals_category(
+   id_animals_category SERIAL,
    name VARCHAR(50) ,
-   PRIMARY KEY(id_animals_categorie)
+   PRIMARY KEY(id_animals_category)
 );
 
 CREATE TABLE user_order(
@@ -48,16 +49,16 @@ CREATE TABLE contient_produit(
 );
 
 CREATE TABLE racer(
-   id_animals_categorie INTEGER,
+   id_animals_category INTEGER,
    id_product INTEGER,
-   PRIMARY KEY(id_animals_categorie, id_product),
-   FOREIGN KEY(id_animals_categorie) REFERENCES animals_categories(id_animals_categorie),
+   PRIMARY KEY(id_animals_category, id_product),
+   FOREIGN KEY(id_animals_category) REFERENCES animals_category(id_animals_category),
    FOREIGN KEY(id_product) REFERENCES product(id_product)
 );
 
 
 
-INSERT INTO animals_categories (name) VALUES
+INSERT INTO animals_category (name) VALUES
  ('Chats'),
  ('Chiens'),
  ('Poissons');
@@ -122,7 +123,7 @@ INSERT INTO contient_produit (id_order, id_product, quantity) VALUES
 
 
 
-INSERT INTO racer (id_animals_categorie, id_product) VALUES
+INSERT INTO racer (id_animals_category, id_product) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
@@ -159,8 +160,8 @@ JOIN product_category pc
     ON p.id_category_product = pc.id_category_product
 JOIN racer r
     ON p.id_product = r.id_product
-JOIN animals_categories ac
-    ON r.id_animals_categorie = ac.id_animals_categorie
+JOIN animals_category ac
+    ON r.id_animals_category = ac.id_animals_category
 
 ORDER BY u.id_order, p.id_product;
 

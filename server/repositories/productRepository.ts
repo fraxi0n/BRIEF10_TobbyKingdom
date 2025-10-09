@@ -21,12 +21,16 @@ export class productRepository extends Repository {
     }
   }
   
-      findAllByAnimals = async () : Promise<any > => {
+      findAllByRaceID = async (pID : number) : Promise<any > => {
     const query = {
-      name: "fetch-all-product ",
+      name: "fetch-all-product with race",
       text: `
-        SELECT * FROM product
+        select * from animals_category 
+join racer on animals_category.id_animals_category = racer.id_animals_category 
+join product on racer.id_product=product.id_product
+where animals_category.id_animals_category = $1
         `,
+        values: [pID]
     };
 
       try {
@@ -60,6 +64,8 @@ export class productRepository extends Repository {
       return 400;
     }
   }
+
+
 
 
 

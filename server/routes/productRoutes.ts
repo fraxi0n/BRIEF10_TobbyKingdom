@@ -9,6 +9,24 @@ productRouter.get("/", (request, response) => {
   controller.browseProducts();
 });
 
+//browse with race
+productRouter.get("/animals-category/:id", (request, response) => {
+  const controller = new ProductController(request, response);
+  controller.browseProductsFromRace();
+});
+
+// READ
+productRouter.get("/target/:id", (request, response) => {
+  const controller = new ProductController(request, response);
+  controller.readProduct();
+});
+
+
+
+
+
+//INUTILISEE POUR LE MOMENT =>
+
 // EDIT
 
 productRouter.post("/edit/:id", (request, response) => {
@@ -28,10 +46,6 @@ productRouter.get("/delete/:id", (request, response) => {
   controller.deleteProduct();
 });
 
-// READ
-productRouter.get("/target/:id", (request, response) => {
-  const controller = new ProductController(request, response);
-  controller.readProduct();
-});
+
 
 export default productRouter;
