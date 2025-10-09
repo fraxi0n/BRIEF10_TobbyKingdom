@@ -9,6 +9,7 @@ export const Header = () => {
     return (
         <div className="header">
             <img src={TobbyPlaceHolder} alt="logo" />
+            <h1>TobbyKingDom</h1>
 
            <nav>
             <ul>
