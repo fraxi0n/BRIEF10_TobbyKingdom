@@ -15,7 +15,7 @@ export const Header = () => {
             <ul>
                 <li><Button label="Chien"/></li>
                 <li><Button label="Chat"/></li>
-                <li><Button label="Poule"/></li>
+                <li><Button label="Poule d'aquarium"/></li>
             </ul>
            </nav>
            <Button label="IconShop"/>
