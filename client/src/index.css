@@ -1,68 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;500;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Couleurs */
+  --clr-bg: #f5f5f3;                 /* Fond : blanc cassé*/
+  --clr-surface: #FFFFFF;            /* Surface (cartes, header) : blanc */
+  --clr-primary: #512278;            /* Couleur principale - mauve du logo */
+  --clr-primary-light: #7a5c9a;      /* Variante claire pour survoler les éléments (:hover) */
+  --clr-primary-dark: #3a1957;       /* Variante foncée pour les textes ou états actifs */
+  
+  --clr-secondary: #c19827;          /* Couleur secondaire : orange grisé */
+  --clr-secondary-dark: #a17c1f;     /* Variante foncée pour survols */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --clr-accent: #cbc2b1;             /* orange pastel */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --clr-text-primary: #3a1957;       /* Texte principal : mauve foncé */
+  --clr-text-secondary: #7a5c9a;     /* Texte secondaire : mauve clair */
+
+  /* Typographie */
+  --ff-headings: 'Lora', serif;
+  --ff-body: 'Poppins', sans-serif;
+  --fs-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.94rem);
+  --fs-base: clamp(1rem, 0.34vw + 0.91rem, 1.25rem);
+  --fs-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.67rem);
+  --fs-lg: clamp(1.56rem, 1vw + 1.31rem, 2.22rem);
+  --fs-xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.96rem);
+  --fs-xxl: clamp(2.44rem, 2.38vw + 1.85rem, 3.95rem);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Styles et espacements */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 4rem;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --shadow-soft: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
+  --transition-smooth: all 0.3s ease-in-out;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
+/* le reste (body, h1, etc.) */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--clr-bg);
+  color: var(--clr-text-primary);
+  font-family: var(--ff-body);
+  font-size: var(--fs-base);
+  line-height: 1.6;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-headings);
+  font-weight: var(--fw-bold);
+  color: var(--clr-primary);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
