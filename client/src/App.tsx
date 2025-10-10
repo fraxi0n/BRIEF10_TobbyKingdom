@@ -1,4 +1,5 @@
-import { Footer } from "./ui/footer/footer";
+import { Carousel } from "./ui/carousel/Carousel";
+import { Footer } from "./ui/footer/Footer";
 import { Header } from "./ui/header/Header"
 
  export const App = () => {
@@ -11,6 +12,7 @@ import { Header } from "./ui/header/Header"
       </div>
       <p>SITE TOBYKINGDOM 
       </p>
+      <Carousel/>
 
       <Footer/>
     </>
