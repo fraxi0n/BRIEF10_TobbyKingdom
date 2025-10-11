@@ -20,7 +20,7 @@ import "./App.css";
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/catalogue" element={<Catalogue />} />
-          <Route path="/categorie/:categoryName" element={<CategoryPage />} />
+          <Route path="/categorie/:categoryId" element={<CategoryPage />} />
           <Route path="/produit/:id" element={<ProductDetail />} />
           <Route path="/panier" element={<Panier />} />
           <Route path="/formulaire" element={<Formulaire />} />
