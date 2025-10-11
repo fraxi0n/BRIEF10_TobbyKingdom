@@ -1,6 +1,6 @@
 // page du formulaire 
 
-export const Formulaire = () => {
+export const FormPage = () => {
     return(
         <div>
 
