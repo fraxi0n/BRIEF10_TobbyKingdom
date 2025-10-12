@@ -7,6 +7,8 @@ import { Panier } from "./pages/panier/Panier";
 import { Header } from "./ui/header/Header";
 import { Footer } from "./ui/footer/Footer";
 import { FormPage } from "./pages/formPage/FormPage";
+import { SuccesPage } from "./pages/sucessPage/SucessPage";
+import { ErrorPage } from "./pages/errorPage/ErrorPage";
 import "./App.css";
 
  export const App = () => {
@@ -24,6 +26,9 @@ import "./App.css";
           <Route path="/produit/:id" element={<ProductDetail />} />
           <Route path="/panier" element={<Panier />} />
           <Route path="/formulaire" element={<FormPage />} />
+          <Route path="/commande-succes" element={<SuccesPage />} />
+          <Route path="/commande-erreur" element={<ErrorPage />} />
+
         </Routes>
       <Footer/>
     </BrowserRouter>

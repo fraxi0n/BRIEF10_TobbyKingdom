@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 // import { MovieCard } from './MovieCard';
 // import { useFetch, type SearchOptionType } from '../hooks/useApi';
 import { useScreenWatch } from '../../hooks/useScreenWatch';
@@ -17,13 +17,6 @@ export function Carousel() {
   const products = useProductsFetch({ animalsCategory: 1 })
 
   const extProducts = [...products, ...products]
-
-  useEffect(  ( )=> { 
-
-
-    console.log("hello")
-    console.log(extProducts)
-  } , [ products]) 
 
 
   const setIndexWithWatch = (pIndex: number) => {

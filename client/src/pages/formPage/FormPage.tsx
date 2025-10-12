@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Button } from "../../ui/button/Button";
-import { Link, redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const FormPage = () => {
 
@@ -11,6 +11,8 @@ export const FormPage = () => {
         lastName: "",
         email: "",
     });
+
+    const navigate = useNavigate()
 
 
 
@@ -30,7 +32,7 @@ export const FormPage = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(form)
+            body: JSON.stringify(form),
         }
 
         const sendForm = async () => {
@@ -39,16 +41,15 @@ export const FormPage = () => {
                 const request = await fetch("http://localhost:3010/api/order/create", options)
 
                 console.log (request.status)
-                // throw redirect("/catalogue")
+                //to do : creer et récupérer la reponse du server pour confirmer la commande 
+                 navigate("/commande-succes")
             }
             catch (error) {
                  console.error(error)
-                // throw redirect("/")
+                 navigate("/commande-erreur")
             }
         }
-
         sendForm()
-
     }
 
         return (<>
@@ -85,8 +86,6 @@ export const FormPage = () => {
                 <Button isSubmitType={true} label={"confirmer commande"}></Button>
 
             </form>
-
-
         </>
 
         );
