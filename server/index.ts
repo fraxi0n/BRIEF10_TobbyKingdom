@@ -6,6 +6,7 @@ import path from "node:path";
 const cors = require('cors');
 
 const app = Express();
+app.use(Express.json());
 const PORT = 3010;
 
 // @ts-ignore
