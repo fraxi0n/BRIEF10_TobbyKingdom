@@ -13,5 +13,6 @@ CREATE DATABASE "BRIEF10"
 
 -- to ADD  img catégorie chien chat poisson 
 -- date d'ajout desprooduit (nouveauté) 
+-- qte dans table relationel
 -- notation produit 
-
+--ajouter un point env dans client

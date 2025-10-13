@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS animals_categories CASCADE;
 CREATE TABLE animals_category(
    id_animals_category SERIAL,
    name VARCHAR(50) ,
+   picture_path VARCHAR(50) ,
    PRIMARY KEY(id_animals_category)
 );
 
@@ -35,6 +36,7 @@ CREATE TABLE product(
    breed_name VARCHAR(50) ,
    stock INTEGER NOT NULL,
    id_category_product INTEGER NOT NULL,
+   creation_date DATE,
    PRIMARY KEY(id_product),
    FOREIGN KEY(id_category_product) REFERENCES product_category(id_category_product)
 );
@@ -57,11 +59,10 @@ CREATE TABLE racer(
 );
 
 
-
-INSERT INTO animals_category (name) VALUES
- ('Chats'),
- ('Chiens'),
- ('Poissons');
+INSERT INTO animals_category (name , picture_path) VALUES
+ ('Chats','/pictures/catPictures/catBanner.jpg' ),
+ ('Chiens','/pictures/dogPictures/dogBanner.jpg'),
+ ('Poules','/pictures/chikenPictures/chickenBanner.jpg');
 
  INSERT INTO product_category (name) VALUES
 ('Nourriture'),
@@ -70,21 +71,21 @@ INSERT INTO animals_category (name) VALUES
 
 
 
-INSERT INTO product (name, price, picture_path, description, breed_name, stock, id_category_product) VALUES
+INSERT INTO product (name, price, picture_path, description, breed_name, stock, id_category_product, creation_date) VALUES
 -- 🐱 Chats
-('Croquettes pour chat adulte', 19.99, 'images/croquettes_chat.jpg', 'Croquettes équilibrées riches en protéines et taurine pour chats adultes.', 'Chat européen', 120, 1),
-('Jouet souris en peluche', 4.50, 'images/jouet_chat.jpg', 'Petite souris douce avec herbe à chat intégrée pour stimuler le jeu.', NULL, 250, 2),
-('Chaton européen', 120.00, 'images/chaton.jpg', 'Chaton joueur et affectueux, vacciné et vermifugé.', 'Chat européen', 10, 3),
+('Croquettes pour chat adulte', 19.99, '/catPictures/cat_croquettes.webp', 'Croquettes équilibrées riches en protéines et taurine pour chats adultes.', 'Chat européen', 120, 1,'2019-04-23' ),
+('Jouet souris en peluche', 4.50, '/catPictures/cat_toy.webp', 'Petite souris douce avec herbe à chat intégrée pour stimuler le jeu.', NULL, 250, 2,'2020-11-05' ),
+('Chaton européen', 120.00, '/catPictures/europeanCat.jpg', 'Chaton joueur et affectueux, vacciné et vermifugé.', 'Chat européen', 10, 3, '2021-07-14'),
 
 -- 🐶 Chiens
-('Croquettes premium pour chien', 34.99, 'images/croquettes_chien.jpg', 'Alimentation complète pour chiens actifs de moyenne taille.', 'Berger australien', 90, 1),
-('Collier réglable en nylon', 8.90, 'images/collier_chien.jpg', 'Collier solide et confortable avec boucle en acier inoxydable.', NULL, 180, 2),
-('Chiot labrador', 250.00, 'images/chiot.jpg', 'Chiot labrador sociable et en pleine santé, prêt à être adopté.', 'Labrador Retriever', 5, 3),
+('Croquettes premium pour chien', 34.99, '/dogPictures/dog_croquettes.webp', 'Alimentation complète pour chiens actifs de moyenne taille.', 'Berger australien', 90, 1,'2022-02-28'),
+('Collier réglable en nylon', 8.90, '/dogPictures/dog_collier.webp', 'Collier solide et confortable avec boucle en acier inoxydable.', NULL, 180, 2,'2023-09-10'),
+('Chiot labrador', 250.00, '/dogPictures/labrador.jpg', 'Chiot labrador sociable et en pleine santé, prêt à être adopté.', 'Labrador Retriever', 5, 3,'2023-09-10'),
 
 -- 🐠 Poissons
-('Flocons pour poissons tropicaux', 6.50, 'images/nourriture_poisson.jpg', 'Mélange équilibré pour poissons tropicaux d’eau douce.', 'Poisson tropical', 200, 1),
-('Aquarium 60L', 79.90, 'images/aquarium_60l.jpg', 'Aquarium en verre avec couvercle et pompe intégrée, idéal pour débutants.', NULL, 30, 2),
-('Poisson rouge', 5.00, 'images/poisson_rouge.jpg', 'Poisson rouge vif, idéal pour aquarium domestique.', 'Carassius auratus', 50, 3);
+('Flocons pour poulets tropicaux', 6.50, '/chikenPictures/chicken_food.webp', 'Mélange équilibré pour poissons tropicaux d’eau douce.', 'Poisson tropical', 200, 1, '2020-08-29'),
+('Balançoire pour poules', 79.90, '/chikenPictures/balançoire.jpg', 'balançoire pour faire de vos poulettes de véritable acrobates .', NULL, 30, 2, '2018-06-17'),
+('Poule rousse', 5.00, '/chikenPictures/chicken.jpg', 'merveilleuse poulettes pondeuse', 'Chickanus KfCsuss ', 50, 3, '2025-03-08');
 
 ;
  
