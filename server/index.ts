@@ -2,6 +2,8 @@ import Express from "express";
 import router from "./routes";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import dotenv from "dotenv";
+dotenv.config()
 
 const cors = require('cors');
 
@@ -15,7 +17,7 @@ const __dirname = path.dirname(__filename);
 
 
 app.use(cors({
-  origin: 'http://localhost:5173', // autorise uniquement ton front local
+  origin: process.env.CLIENT_URL, // autorise uniquement ton front mis dans le fichier .env
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: false, // si tu utilises des cookies
 }));
