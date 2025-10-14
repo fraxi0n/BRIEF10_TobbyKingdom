@@ -2,7 +2,6 @@ import { Button } from "../button/Button";
 import "./Header.css";
 
 
-import TobbyPlaceHolder from "../../../public/pictures/TobbyPlaceHolder.jpg";
 import { useAnimalsCategoriesFetch } from "../../hooks/useAnimalsCategoriesFetch";
 import { Link } from "react-router-dom";
 
@@ -15,7 +14,7 @@ export const Header = () => {
 
 
     return (<div className="header">
-        <img src={TobbyPlaceHolder} alt="logo" />
+        <img src={ "/pictures/kingTobby.png"} alt="logo" />
         <h1>TobbyKingDom</h1>
         <nav>
             <ul>
