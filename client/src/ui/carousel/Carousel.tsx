@@ -1,8 +1,5 @@
-import {  useState } from 'react';
-// import { MovieCard } from './MovieCard';
-// import { useFetch, type SearchOptionType } from '../hooks/useApi';
+import {  useMemo, useState } from 'react';
 import { useScreenWatch } from '../../hooks/useScreenWatch';
-// import type { Product } from '../../models/Products';
 import { useProductsFetch } from '../../hooks/useProductsFetch';
 import { ProductCard } from '../productCard/ProductCard';
 
@@ -11,12 +8,13 @@ export function Carousel() {
 
   const [index, setIndex] = useState<number>(0)
 
+
   const SW = useScreenWatch()
 
+  const searchOption = useMemo(() =>({  animalsCategory: 1 }),[])
+  const products = useProductsFetch(searchOption)
 
-  const products = useProductsFetch({ animalsCategory: 1 })
-
-  const extProducts = [...products, ...products]
+const extProducts = useMemo(() => [...products, ...products], [products])
 
 
   const setIndexWithWatch = (pIndex: number) => {
