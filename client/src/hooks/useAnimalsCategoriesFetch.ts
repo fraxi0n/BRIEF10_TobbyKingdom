@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { AnimalCategory, type AnimalCategoryData } from "../models/AnimalCategory"
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 
 export const useAnimalsCategoriesFetch = ()=> {
 
-  const url = 'http://localhost:3010/api/animals-categories/'
+  const url = API_URL+'/api/animals-categories/'
 
   const [animalsCategories , setAnimalsCategories] = useState<AnimalCategory[]> ([])
 

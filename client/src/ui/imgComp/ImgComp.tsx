@@ -1,4 +1,6 @@
 import "./imgComp.css";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 interface ImgProps {
   path: string,
@@ -13,7 +15,7 @@ export const ImgComp = ({ path , size}: ImgProps) => {
 
   return <>
     <img style={size? widthImg : {}}
-      src={`http://localhost:3010/pictures${path} `}>
+      src={`${API_URL}/pictures${path} `}>
     </img>
   </>
 };

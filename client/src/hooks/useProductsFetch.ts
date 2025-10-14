@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Product, type ProductData } from "../models/Products"
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -14,7 +15,7 @@ export type SearchOptionType  = {
 
 export const useProductsFetch = ( searchOption : SearchOptionType)=> {
 
-  let url = 'http://localhost:3010/api/products/'
+  let url = API_URL+'/api/products/'
 
     if (searchOption.target)
   {

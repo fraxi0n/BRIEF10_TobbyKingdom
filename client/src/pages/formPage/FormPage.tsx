@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "../../ui/button/Button";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const FormPage = () => {
 
@@ -38,7 +39,7 @@ export const FormPage = () => {
         const sendForm = async () => {
             try {
 
-                const request = await fetch("http://localhost:3010/api/order/create", options)
+                const request = await fetch(API_URL+"/api/order/create", options)
 
                 console.log (request.status)
                 //to do : creer et récupérer la reponse du server pour confirmer la commande 
