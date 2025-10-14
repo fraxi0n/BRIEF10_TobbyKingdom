@@ -5,6 +5,7 @@
 import { useAnimalsCategoriesFetch } from "../../hooks/useAnimalsCategoriesFetch";
 import { useProductsFetch, type SearchOptionType } from "../../hooks/useProductsFetch";
 import { useNavigate, useParams } from "react-router-dom";
+import { ImgComp } from "../../ui/imgComp/ImgComp";
 
 
 
@@ -47,7 +48,6 @@ let categoryName;
 
     }
 
-    
 
     return(
         <div>
@@ -59,7 +59,8 @@ let categoryName;
             {FetcherCategoryPage?.map((produit) => {
                 return(
                     <div>
-                <p>{produit.picturePath}</p> {/* picture_path */}
+                {/* <p>{produit.picturePath}</p> picture_path */}
+                <ImgComp path={produit.picturePath} size={300}/>
                 <p>{produit.name}</p> {/* name */}
                 <p>{produit.price}</p> {/* price */}
             </div>
