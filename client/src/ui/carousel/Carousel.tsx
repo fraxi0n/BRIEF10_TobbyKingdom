@@ -2,6 +2,7 @@ import {  useMemo, useState } from 'react';
 import { useScreenWatch } from '../../hooks/useScreenWatch';
 import { useProductsFetch } from '../../hooks/useProductsFetch';
 import { ProductCard } from '../productCard/ProductCard';
+import "./Carousel.css"
 
 
 export function Carousel() {
@@ -34,18 +35,18 @@ const extProducts = useMemo(() => [...products, ...products], [products])
     const incFunc = () => { setIndexWithWatch(index + incValue) }
 
     if (incValue < 0) {
-      return <button className=' ' onClick={incFunc} > {incValue === -1 ? '<' : '<<'}   </button>
+      return <button className='car-btn left' onClick={incFunc} > {incValue === -1 ? '<' : '<<'}   </button>
     }
     else {
-      return <button className='' onClick={incFunc} > {incValue === 1 ? '>' : '>>'}   </button>
+      return <button className='car-btn right' onClick={incFunc} > {incValue === 1 ? '>' : '>>'}   </button>
     }
   }
 
-  return (<>{products.length && <>
+  return (<>{products.length && <div className='carousel'>
     {getCarButton(-1)}
     {extProducts.slice(index, index + SW.carColumn).map((product) => <ProductCard product={product}></ProductCard>)}
     {getCarButton(+1)}
-  </> }
+  </div> }
   </>
   )
 }

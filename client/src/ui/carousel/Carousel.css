@@ -1,0 +1,36 @@
+.carousel{
+    display: flex;
+    /* background-color: tomato; */
+    transform: translate(-75px);
+
+
+}
+
+.car-btn {
+    /* position: absolute; */
+    background-color: rgba(82, 121, 204, 0.048);
+    flex-shrink: 0;
+    width: 150px;
+    border: 0;
+    transition: background-color 0.5s;
+    font-size: larger;
+
+}
+
+.car-btn:hover {
+    /* position: absolute; */
+    background-color: rgba(82, 121, 204, 0.342);
+    
+}
+
+
+
+.left {
+    transform: translate(150px);
+
+}
+
+.right {
+    transform: translate(-150px);
+
+}
