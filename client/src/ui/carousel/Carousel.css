@@ -1,7 +1,6 @@
 .carousel{
     display: flex;
-    /* background-color: tomato; */
-    transform: translate(-75px);
+    justify-content: center;
 
 
 }
@@ -11,6 +10,7 @@
     background-color: rgba(82, 121, 204, 0.048);
     flex-shrink: 0;
     width: 150px;
+    height: 305px;
     border: 0;
     transition: background-color 0.5s;
     font-size: larger;

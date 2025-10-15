@@ -1,0 +1,14 @@
+.product-card{
+    flex-direction: column;
+    padding : 3px;
+    background-color: var(--clr-primary-dark);
+    color: rgb(255, 255, 255);
+
+}
+
+.price-btn{
+    display: flex;
+    justify-content: center;
+    gap : 2rem
+
+} 
