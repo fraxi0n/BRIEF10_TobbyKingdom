@@ -60,9 +60,9 @@ CREATE TABLE racer(
 
 
 INSERT INTO animals_category (name , picture_path) VALUES
- ('Chats','/pictures/catPictures/catBanner.jpg' ),
- ('Chiens','/pictures/dogPictures/dogBanner.jpg'),
- ('Poules','/pictures/chikenPictures/chickenBanner.jpg');
+ ('Chats','/catPictures/catBanner.jpg' ),
+ ('Chiens','/dogPictures/dogBanner.jpg'),
+ ('Poules','/chikenPictures/chickenBanner.jpg');
 
  INSERT INTO product_category (name) VALUES
 ('Nourriture'),
