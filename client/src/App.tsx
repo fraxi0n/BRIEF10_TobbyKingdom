@@ -19,6 +19,7 @@ import "./App.css";
       </div>
       <p>SITE TOBYKINGDOM 
       </p>
+{/* ici sera le context provider */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/catalogue" element={<Catalogue />} />
@@ -28,8 +29,8 @@ import "./App.css";
           <Route path="/formulaire" element={<FormPage />} />
           <Route path="/commande-succes" element={<SuccesPage />} />
           <Route path="/commande-erreur" element={<ErrorPage />} />
-
         </Routes>
+
       <Footer/>
     </BrowserRouter>
   );
