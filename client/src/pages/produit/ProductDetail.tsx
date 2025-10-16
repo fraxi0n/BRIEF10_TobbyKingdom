@@ -1,14 +1,18 @@
-// import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useProductsFetch } from '../../hooks/useProductsFetch';
 import { Product } from '../../models/Products';
 import { ImgComp } from '../../ui/imgComp/ImgComp';
 import './productDetail.css';
+import { useMemo } from 'react';
 
 
 export const ProductDetail = () => {
-  const products: Product[] = useProductsFetch({ target: 3 });
+  
+  const {id} = useParams()
+  const searchOption = useMemo(() =>({ target: parseInt(id??"0")}),[id])
+  const products: Product[] = useProductsFetch(searchOption);
   const product = products[0];
-
+  
   if (!product) {
     return <div className="loading-container">Erreur lors du chargement du produit...</div>;
   }
