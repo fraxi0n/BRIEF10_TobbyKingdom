@@ -1,0 +1,44 @@
+.header{
+    display : flex;
+    background-color: var(--clr-surface);
+    text-align: start;
+    text-justify: auto;
+    justify-content: space-between;
+}
+
+.logo-title{
+    display : flex;
+    align-items: end;
+    margin : 0;
+      flex: 0 1 80px;        /* flex: [grow] [shrink] [basis] */
+  min-width: 40px;       /* limite basse pour éviter déformation trop petite */
+  object-fit: contain;
+    
+    
+}
+nav {
+    margin:auto 2rem;
+}
+
+.cart-icon{
+    position: absolute;
+    width: 32px;
+    color: aliceblue;
+}
+
+.nav-cat{
+    display: flex;
+
+
+}
+
+.dd-active {
+    background-color: var(--clr-primary-dark);
+
+
+}
+
+.dropdown-content{
+    position: absolute;
+
+}
