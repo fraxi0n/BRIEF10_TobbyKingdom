@@ -1,0 +1,11 @@
+.btn{
+    min-width: 100px ;
+    height : 40px;
+    border: 2 solid black;
+    box-shadow: 0 3px 5px var(--clr-primary-dark);
+    background-color: var(--clr-primary-light);
+    border-radius: 5px;
+    font-size: large;
+    color: aliceblue;
+
+}

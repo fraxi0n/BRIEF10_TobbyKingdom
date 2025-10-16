@@ -9,7 +9,7 @@ interface ButtonProps {
 }
 
 export const Button = ({ label, isSubmitType, onClick }: ButtonProps) => {
-  return <button type={isSubmitType ? "submit" : "button"}
+  return <button className={"btn"}  type={isSubmitType ? "submit" : "button"}
     onClick={onClick ? onClick : () => console.log("aucun effet sur ce bouton:" + label)}>
     {label}
   </button>;
