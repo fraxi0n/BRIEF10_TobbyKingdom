@@ -10,15 +10,18 @@ import { FormPage } from "./pages/formPage/FormPage";
 import { SuccesPage } from "./pages/sucessPage/SucessPage";
 import { ErrorPage } from "./pages/errorPage/ErrorPage";
 import "./App.css";
+import { CartContextProvider } from "./context/CartContext";
 
  export const App = () => {
   return (
     <BrowserRouter>
+      <CartContextProvider>
       <div>
         <Header/>
       </div>
       <p>SITE TOBYKINGDOM 
       </p>
+
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/catalogue" element={<Catalogue />} />
@@ -30,6 +33,7 @@ import "./App.css";
           <Route path="/commande-erreur" element={<ErrorPage />} />
 
         </Routes>
+      </CartContextProvider>
       <Footer/>
     </BrowserRouter>
   );
