@@ -1,0 +1,10 @@
+.range-slider{
+    flex-direction: row;
+    padding : 3px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--clr-primary-dark);
+    color: rgb(172, 18, 18);
+
+}
+

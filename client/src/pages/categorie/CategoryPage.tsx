@@ -1,90 +1,155 @@
-// page de catégorie : on affiche 1 univers genre chat 
+// page de catégorie : on affiche 1 univers genre chat
 // on a nos 3filtres et les images de nos produits
 
-
 import { useAnimalsCategoriesFetch } from "../../hooks/useAnimalsCategoriesFetch";
-import { useProductsFetch, type SearchOptionType } from "../../hooks/useProductsFetch";
+import {
+  useProductsFetch,
+  type SearchOptionType,
+} from "../../hooks/useProductsFetch";
 import { useNavigate, useParams } from "react-router-dom";
 import { ImgComp } from "../../ui/imgComp/ImgComp";
+import { useMemo, useState } from "react";
+import { ProductCard } from "../../ui/productCard/ProductCard";
 
-
-
-export type Products = {
-    id_product : number,
-    name : string,
-    price : number,
-    picture_path : string,
-    description : string,
-    breed_name : string,
-    stock : number,
-    id_category_product : number,
-}
-
+// export type Products = {
+//     id_product : number,
+//     name : string,
+//     price : number,
+//     picture_path : string,
+//     description : string,
+//     breed_name : string,
+//     stock : number,
+//     id_category_product : number,
+// }
 
 export const CategoryPage = () => {
-    const { categoryId } = useParams<{categoryId: string  }>();
-    const navigate = useNavigate();
+  const { categoryId } = useParams<{ categoryId: string }>();
+  const navigate = useNavigate();
 
-    const animalCategories = useAnimalsCategoriesFetch()
+  const animalCategories = useAnimalsCategoriesFetch();
 
+  let FetcherCategoryPage;
 
-let FetcherCategoryPage;
+  let categoryName;
 
-let categoryName;
-
-    if (categoryId) {
-        const paramHook: SearchOptionType = {animalsCategory: parseInt(categoryId)};
-
-         FetcherCategoryPage = useProductsFetch(paramHook);
-
-         categoryName = animalCategories.find(
-        (category) => category.id_animals_category === parseInt(categoryId)
+  if (categoryId) {
+    const paramHook: SearchOptionType = useMemo(
+      () => ({ animalsCategory: parseInt(categoryId) }),
+      []
     );
-        
-    } else { 
-        // console.log("HeloooooooOOO" );
-        
-        //useNavigate => redirection vers une page
+    // {animalsCategory: parseInt(categoryId)};
 
-    }
+    FetcherCategoryPage = useProductsFetch(paramHook);
+
+    categoryName = animalCategories.find(
+      (category) => category.id_animals_category === parseInt(categoryId)
+    );
+  } else {
+    // console.log("HeloooooooOOO" );
+    //useNavigate => redirection vers une page
+  }
+
+  // ___ product_category_btn __________
+
+  const [familyFilter, setFamilyFilter] = useState<number | null> (null)
+
+  const handleFilter = (familyId: number) => {
+    setFamilyFilter(familyId);
+  };
+
+  // ___ range slider__
+  const [slider, setSlider] = useState({
+    max: 1000,
+    min: 0,
+    value: 1000,  //pour que le slider soit par default à 1000 lorsquon arrive sur la page
+  });
+
+  const onSlide = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSlider({
+      ...slider,
+      value: parseInt(event.target.value),
+    });
+  };
+
+  const filterProducts = FetcherCategoryPage
+  ?.filter((produit) => produit.price <= slider.value )
+  ?.filter((produit) => !familyFilter || produit.categoryId === familyFilter);
 
 
-    return(
-        <div>
-            
-            <h2>Pour nos amis les {categoryName?.name}</h2>
-            {/* {FetcherCategoryPage.name} */}
-            <img src="public/catPictures/catBanner.jpg" alt="category banner" />
-          
-            {FetcherCategoryPage?.map((produit) => {
-                return(
-                    <div>
-                {/* <p>{produit.picturePath}</p> picture_path */}
-                <ImgComp path={produit.picturePath} size={300}/>
-                <p>{produit.name}</p> {/* name */}
-                <p>{produit.price}</p> {/* price */}
-            </div>
-                )
-            })
-            
-            }
+  return (
+    <div>
+      <div>
+        {/* ______________banner______________  */}
+        {/* {FetcherCategoryPage.name} */}
+        {/* <img src="public/catPictures/catBanner.jpg" alt="category banner" /> */}
+        {categoryName && (
+          <ImgComp path={categoryName.getpicturePath()} size={300} />
+        )}
+        <h2>Pour nos amis les {categoryName?.name}</h2>
+      </div>
+
+      {/* ______________filter______________  */}
+      {/* <p>{product_category.id_category_product}</p> id_category_product */}
+
+      {/* => 3 buttons/liens  
+                +  input de type RangeSlider */}
+
+      {/* https://stackoverflow.com/questions/62725470/create-range-slider-in-react-js */}
+      <div className="family_filter_container">
+
+        {/* <Button label="voir liste des produits" onClick={()=>navigate("/produit/"+product.id)} /> */}
+        {/* <p>Animaux</p> */}
+        <button onClick={() => handleFilter(3)}>Animaux</button>
+        {/* <p>Nourriture</p> */}
+        <button onClick={() => handleFilter(1)}>Nourriture</button>
+        {/* <p>Accessoires</p> */}
+        <button onClick={() => handleFilter(2)}>Accessoires</button>
+
+        <div className="price-slider">
+          <p>Prix</p>
+
+          <div className="range-slider">
+            <p>{slider.value}</p>
+            <p>Chien de la Casse 0€</p>
+            <input
+              type="range"
+              min={slider.min}
+              max={slider.max}
+              value={slider.value}
+              onChange={(event) => onSlide(event)}
+              className="slider"
+              id="myRange"
+            ></input>
+            <p>1000€ Poule de Luxe</p>
+          </div>
         </div>
-        
-    );
-}
+      </div>
 
+      {/* ______________products list______________  */}
+      <div>
+        {/* {FetcherCategoryPage?.map((produit) => {
+          return <ProductCard product={produit} />;
+        })} 
+         pour filtrer remplacé par :*/}
+
+        {filterProducts?.map((produit) => {
+          return <ProductCard product={produit} />;
+        })}
+
+      </div>
+    </div>
+  );
+};
 
 //voir le fetch detailMovies
 
-// const FetcherDetailsMovies = useFetchDetails<detailsMovies>(id);   
+// const FetcherDetailsMovies = useFetchDetails<detailsMovies>(id);
 // => remplacer id par 1 chiffre temporairement
 // const products = useProductsFetch({ animalsCategory: 1 })
 // const products = useProductsFetch({ animalsCategory: { animalCategoryID })
 
 // hook useParams
 
-// const animalCategoryID  = hook useParam() 
-
-
+// const animalCategoryID  = hook useParam()
 
 //return product
