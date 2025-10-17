@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ImgComp } from "../../ui/imgComp/ImgComp";
 import { useMemo, useState } from "react";
 import { ProductCard } from "../../ui/productCard/ProductCard";
+import "./categoryPage.css";
 
 // export type Products = {
 //     id_product : number,
@@ -24,6 +25,7 @@ import { ProductCard } from "../../ui/productCard/ProductCard";
 
 export const CategoryPage = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
+
   const navigate = useNavigate();
 
   const animalCategories = useAnimalsCategoriesFetch();
@@ -35,7 +37,7 @@ export const CategoryPage = () => {
   if (categoryId) {
     const paramHook: SearchOptionType = useMemo(
       () => ({ animalsCategory: parseInt(categoryId) }),
-      []
+      [categoryId]
     );
     // {animalsCategory: parseInt(categoryId)};
 
@@ -59,9 +61,9 @@ export const CategoryPage = () => {
 
   // ___ range slider__
   const [slider, setSlider] = useState({
-    max: 1000,
+    max: 300,
     min: 0,
-    value: 1000,  //pour que le slider soit par default à 1000 lorsquon arrive sur la page
+    value: 300,  //pour que le slider soit par default à 1000 lorsquon arrive sur la page
   });
 
   const onSlide = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,17 +101,18 @@ export const CategoryPage = () => {
 
         {/* <Button label="voir liste des produits" onClick={()=>navigate("/produit/"+product.id)} /> */}
         {/* <p>Animaux</p> */}
-        <button onClick={() => handleFilter(3)}>Animaux</button>
+        <button className="family_btn" onClick={() => handleFilter(3)}>Animaux</button>
         {/* <p>Nourriture</p> */}
-        <button onClick={() => handleFilter(1)}>Nourriture</button>
+        <button className="family_btn" onClick={() => handleFilter(1)}>Nourriture</button>
         {/* <p>Accessoires</p> */}
-        <button onClick={() => handleFilter(2)}>Accessoires</button>
+        <button className="family_btn" onClick={() => handleFilter(2)}>Accessoires</button>
 
         <div className="price-slider">
           <p>Prix</p>
+          <p>{slider.value}</p>
 
           <div className="range-slider">
-            <p>{slider.value}</p>
+            
             <p>Chien de la Casse 0€</p>
             <input
               type="range"
@@ -120,7 +123,8 @@ export const CategoryPage = () => {
               className="slider"
               id="myRange"
             ></input>
-            <p>1000€ Poule de Luxe</p>
+            <p>300€ Poule de Luxe</p>
+            
           </div>
         </div>
       </div>
