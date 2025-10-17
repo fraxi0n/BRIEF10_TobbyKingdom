@@ -1,6 +1,7 @@
 .product-card{
     flex-direction: column;
     padding : 3px;
+    max-width: 500px;
     background-color: var(--clr-primary-dark);
     color: rgb(255, 255, 255);
 

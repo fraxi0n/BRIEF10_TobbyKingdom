@@ -27,6 +27,7 @@ export const useProductsFetch = ( searchOption : SearchOptionType)=> {
   }
 
 
+  
   const [products , setProducts] = useState<Product[]> ([])
 
   useEffect(() => {
