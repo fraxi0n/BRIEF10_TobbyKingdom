@@ -1,18 +1,21 @@
 import {  useMemo, useState } from 'react';
 import { useScreenWatch } from '../../hooks/useScreenWatch';
-import { useProductsFetch } from '../../hooks/useProductsFetch';
+import { useProductsFetch, type SearchOptionType } from '../../hooks/useProductsFetch';
 import { ProductCard } from '../productCard/ProductCard';
 import "./Carousel.css"
 
+type Props = { 
+  searchOption : SearchOptionType
+}
 
-export function Carousel() {
+export function Carousel( {searchOption } : Props ) {
 
   const [index, setIndex] = useState<number>(0)
 
 
   const SW = useScreenWatch()
 
-  const searchOption = useMemo(() =>({  animalsCategory: 1 }),[])
+  // const searchOption = useMemo(() =>({  animalsCategory: 1 }),[])
   const products = useProductsFetch(searchOption)
 
 const extProducts = useMemo(() => [...products, ...products], [products])
