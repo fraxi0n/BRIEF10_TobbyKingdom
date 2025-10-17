@@ -11,6 +11,7 @@ import { ImgComp } from "../../ui/imgComp/ImgComp";
 import { useMemo, useState } from "react";
 import { ProductCard } from "../../ui/productCard/ProductCard";
 import "./categoryPage.css";
+import { Button } from "../../ui/button/Button";
 
 // export type Products = {
 //     id_product : number,
@@ -99,13 +100,31 @@ export const CategoryPage = () => {
       {/* https://stackoverflow.com/questions/62725470/create-range-slider-in-react-js */}
       <div className="family_filter_container">
 
+
+
+{/* method button 1 */}
         {/* <Button label="voir liste des produits" onClick={()=>navigate("/produit/"+product.id)} /> */}
         {/* <p>Animaux</p> */}
-        <button className="family_btn" onClick={() => handleFilter(3)}>Animaux</button>
+        {/* <button className="family_btn" onClick={() => handleFilter(3)}>Animaux</button> */}
         {/* <p>Nourriture</p> */}
-        <button className="family_btn" onClick={() => handleFilter(1)}>Nourriture</button>
+        {/* <button className="family_btn" onClick={() => handleFilter(1)}>Nourriture</button> */}
         {/* <p>Accessoires</p> */}
-        <button className="family_btn" onClick={() => handleFilter(2)}>Accessoires</button>
+        {/* <button className="family_btn" onClick={() => handleFilter(2)}>Accessoires</button> */}
+
+
+{/* method button Composant */}
+        <Button 
+        label={"Animaux"} 
+        onClick={() => handleFilter(3)} 
+        classProps=" family_btn"
+        />
+        <Button label={"Nourriture"} 
+        onClick={() => handleFilter(1)} 
+        classProps=" family_btn"
+        />
+        <Button label={"Accessoires"} 
+        onClick={() => handleFilter(2)}
+        classProps=" family_btn"/>
 
         <div className="price-slider">
           <p>Prix</p>

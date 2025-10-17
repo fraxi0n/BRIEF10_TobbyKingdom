@@ -1,10 +1,18 @@
-.family_filter_container {
-}
-
 .family_btn {
+  background-color: var(--clr-bg) !important;
+  color: var(--clr-primary-dark) !important;
+  box-shadow: none !important;
+  /* border: 2px solid var(--clr-primary-dark) !important; */
+  border-bottom: 2px solid var(--clr-primary-dark) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0%;
 }
 
-.price-slider {
+.family_btn:hover {
+  background-color: var(--clr-primary-light) !important;
+  color: var(--clr-surface) !important;
 }
 
 .range-slider {
@@ -13,8 +21,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: var(--clr-primary-dark); */
-  /* color: rgb(172, 18, 18); */
 }
 
 .slider {
@@ -39,4 +45,4 @@
   height: 18px;
   border-radius: 12%;
   align-items: center;
-} /* firefox */
+} /* pour firefox */
