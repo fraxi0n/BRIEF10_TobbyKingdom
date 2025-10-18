@@ -1,11 +1,5 @@
 /* @import "/client/src/index.css"  */
 
-#root {
-
-  text-align: center;
-
-  background-color: var(--clr-bg);
-}
 
 .is-flex{
       display : flex;

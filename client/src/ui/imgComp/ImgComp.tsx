@@ -1,4 +1,5 @@
 import "./imgComp.css";
+import { useScreenWatch } from "../../hooks/useScreenWatch";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
@@ -10,8 +11,14 @@ interface ImgProps {
 
 export const ImgComp = ({ path , size}: ImgProps) => {
 
-  const widthImg = {width : ` ${ size? size : 0}px` }
+  const SW = useScreenWatch()
+if (size && SW.width<size )
+{
+  size=SW.width
 
+}
+  
+  const widthImg = {width : ` ${ size? size : 0}px` }
 
   return <>
     <img style={size? widthImg : {}}
