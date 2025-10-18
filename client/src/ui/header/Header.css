@@ -1,9 +1,11 @@
 .header{
     display : flex;
+    flex-wrap: wrap;
     background-color: var(--clr-surface);
     text-align: start;
     text-justify: auto;
-    justify-content: space-between;
+    justify-content: center;
+    gap : 10px
 }
 
 .logo-title{

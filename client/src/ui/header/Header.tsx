@@ -6,7 +6,7 @@ import "../../App.css";
 import { useAnimalsCategoriesFetch } from "../../hooks/useAnimalsCategoriesFetch";
 import { Link, useNavigate } from "react-router-dom";
 import { useScreenWatch } from "../../hooks/useScreenWatch";
-import {  useState } from "react";
+import { useState } from "react";
 
 
 export const Header = () => {
@@ -16,7 +16,7 @@ export const Header = () => {
 
     const [isDropDownOpen, setDropdownOpen] = useState(false)
 
-    const navigate =useNavigate()
+    const navigate = useNavigate()
 
     const SW = useScreenWatch()
 
@@ -33,17 +33,21 @@ export const Header = () => {
 
                 {
                     SW.isMobile ? <div className="dropdown">
-                        <Button classProps={isDropDownOpen?" dd-active" :"" } label={"Categories"} onClick={() => setDropdownOpen((prev) => !prev)}></Button>
+                        <Button classProps={isDropDownOpen ? " dd-active" : ""} label={"Categories"} 
+                        onClick={() => setDropdownOpen((prev) => !prev)}></Button>
                         <div className="dropdown-content">
-                        {
-                            isDropDownOpen && animalCategories.map((cat, key) => {
-                                return  <div key={key} className="dropdown-button">
+                            {
+                                isDropDownOpen && animalCategories.map((cat, key) => {
+                                    return <div key={key} className="dropdown-button">
 
-                                    <Button label={cat.getName()} onClick={()=>navigate("/categorie/" + cat.getId())} />
-                                </div>
-                            
-                            })
-                        }
+                                        <Button label={cat.getName()} onClick={() => {
+                                            setDropdownOpen(false);
+                                            navigate("/categorie/" + cat.getId())
+                                        }} />
+                                    </div>
+
+                                })
+                            }
                         </div>
                     </div>
 
