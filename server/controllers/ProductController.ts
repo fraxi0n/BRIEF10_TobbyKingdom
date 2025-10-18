@@ -2,7 +2,6 @@ import { Controller } from "../libs/Controller";
 import { productRepository } from "../repositories/productRepository";
 
 export class ProductController extends Controller {
-  // Route GET `/products` - liste 
 
 
   public async browseProducts() {
@@ -10,7 +9,6 @@ export class ProductController extends Controller {
     const result = await repo.findAll();
 
     return this.errorManager(result);
-    // this.response.json(JSON.stringify(result));
   }
 
   
@@ -46,29 +44,10 @@ export class ProductController extends Controller {
 
   }
 
+    public async browseNewProducts() {
 
-
-
-
-
-
-  public async createProduct() {
-    return this.response.json({});
-  }
-
-  public async createProductSubmission() {
-        return this.response.json({});
-  }
-
-  public async editProduct() {
-        return this.response.json({});
-  }
-
-  public async editProductSubmission() {
-        return this.response.json({});
-  }
-
-  public async deleteProduct() {
-        return this.response.json({});
+    const repo = new productRepository();
+    const result = await repo.findNew();
+    return this.errorManager(result);
   }
 }

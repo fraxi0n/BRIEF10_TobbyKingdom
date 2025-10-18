@@ -20,6 +20,24 @@ export class productRepository extends Repository {
       return 400;
     }
   }
+
+      findNew= async () : Promise<any > => {
+    const query = {
+      name: "fetch-all-product ",
+      text: `
+         SELECT * FROM product order by creation_date desc limit 5;
+        `,
+    };
+
+      try {
+      const result = await this.pool.query(query);
+      
+      return result.rows;
+    } catch (error) {
+      console.log(error)
+      return 400;
+    }
+  }
   
       findAllByRaceID = async (pID : number) : Promise<any > => {
     const query = {
@@ -64,11 +82,6 @@ where animals_category.id_animals_category = $1
       return 400;
     }
   }
-
-
-
-
-
 
 
       findRandomTarget= async () : Promise<any > => { //todo

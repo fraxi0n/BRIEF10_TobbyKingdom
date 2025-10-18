@@ -19,11 +19,12 @@ export const Homepage = () => {
                             <ImgComp size={500} path={cat.getpicturePath()}></ImgComp>
                         </>
                         )
-
                     }
                 </div>
             </Link>
-            <Carousel searchOption={{ animalsCategory: 1 }} />
+            <br />
+            <h3>Découvrez nos derniers produits</h3>
+            <Carousel searchOption={{ isNew: true }} />
         </>
     );
 }

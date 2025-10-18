@@ -22,29 +22,11 @@ productRouter.get("/target/:id", (request, response) => {
 });
 
 
-
-
-
-//INUTILISEE POUR LE MOMENT =>
-
-// EDIT
-
-productRouter.post("/edit/:id", (request, response) => {
+productRouter.get("/new", (request, response) => {
   const controller = new ProductController(request, response);
-  controller.editProductSubmission();
+  controller.browseNewProducts();
 });
 
-// ADD
-productRouter.post("/create", (request, response) => {
-  const controller = new ProductController(request, response);
-  controller.createProductSubmission();
-});
-
-// DELETE
-productRouter.get("/delete/:id", (request, response) => {
-  const controller = new ProductController(request, response);
-  controller.deleteProduct();
-});
 
 
 

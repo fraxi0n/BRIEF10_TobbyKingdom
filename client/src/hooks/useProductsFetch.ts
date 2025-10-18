@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 export type SearchOptionType  = {
   animalsCategory? : number, 
   limit? : number  ,
-  isRandom ? : true , 
+  isNew ? : true , 
   target? :number 
 
 }
@@ -24,6 +24,9 @@ export const useProductsFetch = ( searchOption : SearchOptionType)=> {
   } else  if (searchOption.animalsCategory)
   {
     url += "animals-category/"+searchOption.animalsCategory
+  } else if (searchOption.isNew)
+  {
+    url += "new"
   }
 
 
