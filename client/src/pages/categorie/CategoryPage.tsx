@@ -6,11 +6,12 @@ import {
   useProductsFetch,
   type SearchOptionType,
 } from "../../hooks/useProductsFetch";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { ImgComp } from "../../ui/imgComp/ImgComp";
 import { useMemo, useState } from "react";
 import { ProductCard } from "../../ui/productCard/ProductCard";
 import "./categoryPage.css";
+import "../../App.css";
 import { Button } from "../../ui/button/Button";
 
 // export type Products = {
@@ -27,7 +28,6 @@ import { Button } from "../../ui/button/Button";
 export const CategoryPage = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
 
-  const navigate = useNavigate();
 
   const animalCategories = useAnimalsCategoriesFetch();
 
@@ -128,7 +128,7 @@ export const CategoryPage = () => {
 
         <div className="price-slider">
           <p>Prix</p>
-          <p>{slider.value}</p>
+          <p>{slider.value + " €"}</p>
 
           <div className="range-slider">
             
@@ -149,7 +149,7 @@ export const CategoryPage = () => {
       </div>
 
       {/* ______________products list______________  */}
-      <div>
+      <div className="is-center">
         {/* {FetcherCategoryPage?.map((produit) => {
           return <ProductCard product={produit} />;
         })} 
