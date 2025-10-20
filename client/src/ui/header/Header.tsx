@@ -2,15 +2,15 @@ import { Button } from "../button/Button";
 import "./Header.css";
 import "../../App.css";
 
-
+import { useCartContext } from "../../context/CartContext";
 import { useAnimalsCategoriesFetch } from "../../hooks/useAnimalsCategoriesFetch";
 import { Link, useNavigate } from "react-router-dom";
 import { useScreenWatch } from "../../hooks/useScreenWatch";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 
 
 export const Header = () => {
-
+    const { cartQuantity } = useCartContext();
 
     const animalCategories = useAnimalsCategoriesFetch()
 
@@ -19,7 +19,7 @@ export const Header = () => {
     const navigate =useNavigate()
 
     const SW = useScreenWatch()
-
+    const labelPanier = cartQuantity > 0 ? `Panier (${cartQuantity})` : "Panier";
 
     return (<div className="header">
         <Link to={"/"} >
@@ -58,7 +58,7 @@ export const Header = () => {
                         </>
                 }
                 <> </>
-                <Button label="Panier" />
+                <Button label={labelPanier} onClick={() => navigate("/panier")} />
             </div>
         </nav>
 

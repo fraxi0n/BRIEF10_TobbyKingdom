@@ -4,10 +4,11 @@ import { Product } from '../../models/Products';
 import { ImgComp } from '../../ui/imgComp/ImgComp';
 import './productDetail.css';
 import { useMemo } from 'react';
+import { useCartContext } from "../../context/CartContext";
 
 
 export const ProductDetail = () => {
-  
+   const { addToCart } = useCartContext();
   const {id} = useParams()
   const searchOption = useMemo(() =>({ target: parseInt(id??"0")}),[id])
   const products: Product[] = useProductsFetch(searchOption);
@@ -34,7 +35,9 @@ export const ProductDetail = () => {
             <p>{product.description}</p>
           </div>
           
-          <button className="add-to-cart-button" disabled={product.stock === 0}>
+          <button className="add-to-cart-button" 
+          disabled={product.stock === 0}
+          onClick={() => addToCart(product)}>
             Ajouter au panier
           </button>
         </div>
