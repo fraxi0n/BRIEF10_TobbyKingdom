@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import { ImgComp } from '../../ui/imgComp/ImgComp';
 import './panier.css';
+import { Button } from "../../ui/button/Button";
 
 
 export const Panier = () => {
+  const navigate =useNavigate()
+  
   const { cartItems, increaseCartQuantity, decreaseCartQuantity } = useCartContext();
 
   const totalPrice = cartItems.reduce(
@@ -42,8 +46,8 @@ export const Panier = () => {
 
       <div className="panier-summary">
         <h2>Total : {totalPrice.toFixed(2)} €</h2>
-        <button className="checkout-button">Passer la commande</button>
-      </div>
+          <Button label={"Passer la commande"} onClick={() => navigate("/formulaire")} />
+        </div>
     </div>
   );
 };
