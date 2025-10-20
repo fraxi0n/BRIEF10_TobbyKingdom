@@ -16,12 +16,7 @@ import { CartContextProvider } from "./context/CartContext";
   return (
     <BrowserRouter>
       <CartContextProvider>
-      <div>
         <Header/>
-      </div>
-      <p>SITE TOBYKINGDOM 
-      </p>
-
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/catalogue" element={<Catalogue />} />
