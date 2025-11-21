@@ -9,7 +9,7 @@ const cors = require('cors');
 
 const app = Express();
 app.use(Express.json());
-const PORT = 3010;
+const PORT = process.env.SERVER_PORT;
 
 // @ts-ignore
 const __filename = fileURLToPath(import.meta.url);

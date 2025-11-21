@@ -1,4 +1,3 @@
-import "./imgComp.css";
 import { useScreenWatch } from "../../hooks/useScreenWatch";
 const API_URL = import.meta.env.VITE_API_URL;
 

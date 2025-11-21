@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prod" : "vite --mode prod",
+    "docker-prod" : "vite --mode prod  --host 0.0.0.0 --port 5010"
+
   },
   "dependencies": {
     "react": "^18.2.0",
