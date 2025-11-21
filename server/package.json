@@ -11,7 +11,7 @@
     "build:css": "sass src/scss:public/css",
     "watch:css": "sass --watch src/scss:public/css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docker-prod": "tsx index.ts"
+    "docker-prod": "node db/db.populate.js && tsx index.ts"  
   },
   "keywords": [],
   "author": "",
